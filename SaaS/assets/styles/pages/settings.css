@@ -1,0 +1,35 @@
+.photo-content {
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 2px;
+    border: 2px solid #cccccc;
+    position: relative;
+}
+.photo-mask {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+}
+.photo-upload-btn {
+    color: #fafafa !important;
+    border: 2px solid #fafafa;
+    padding: 1px 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -50px;
+    border-radius: 3px;
+    visibility: hidden;
+    transition: all .2s ease-in;
+}
+.photo-content:hover .photo-upload-btn {
+    margin-top: 50px;
+    visibility: visible;
+    display: inline-block;
+}

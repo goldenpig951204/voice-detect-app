@@ -1,0 +1,25 @@
+.form-control {
+    border-right: 0;
+}
+.input-group-append .input-group-text {
+    background-color: transparent;
+    border-bottom-right-radius: .25rem;
+    border-left: 0;
+    border-top-right-radius: .25rem;
+    color: #777;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control:focus~.input-group-append .input-group-text {
+    border-color: #80bdff;
+}
+.logo-container {
+    padding: 0px 4px 8px;
+    border-radius: 50%;
+    border: 2px solid #cccccc;
+    display: inline-block;
+}
+.logo-container img {
+    border-radius: 50%;
+    width: 100px;
+    height: auto;
+}

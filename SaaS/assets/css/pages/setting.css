@@ -1,0 +1,36 @@
+span.image-preview {
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #cccccc;
+    display: inline-block;
+    position: relative;
+}
+span.image-preview img {
+    border-radius: 50%;
+    z-index: 0;
+}
+span.image-preview .mask {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+span.image-preview .mask a {
+    border: 1px solid #fafafa;
+    padding: 2px 5px;
+    font-size: 10px;
+    margin-top: 30px;
+    transition: all .5s ease;
+    font-weight: bold;
+}
+span.image-preview .mask a:hover {
+    color: #ffffff !important;
+}
+span.image-preview:hover .mask {
+    display: flex;
+}

@@ -1,0 +1,20 @@
+#app {
+    height: 100vh;
+    background-image: url('../../images/background.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form-container {
+    height: 100vh;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000099;
+}
+.form-container form {
+    flex-basis: 400px;
+    padding: 20px;
+    background-color: #00000066;
+}

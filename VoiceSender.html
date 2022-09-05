@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VoiceSender</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-body">
+                    <form class="form" id="enrol_form">
+                        <div class="form-group">
+                            <h3 class="text-center">Enrolment Form</h3>
+                        </div>
+                        <div class="form-group">
+                            <label>Speaker Id</label>
+                            <input type="text" name="speakerId" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Speaker Voice</label>
+                            <input type="file" name="voiceFile" class="form-control"/>
+                        </div>
+                        <div class="form-action text-right">
+                            <button type="button" id="enrol_btn" class="btn btn-primary">Request Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-body">
+                    <form class="form" id="verify_form">
+                        <div class="form-group">
+                            <h3 class="text-center">Verification Form</h3>
+                        </div>
+                        <div class="form-group">
+                            <label>Speaker Id</label>
+                            <input type="text" name="speakerId" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Speaker Voice</label>
+                            <input type="file" name="voiceFile" class="form-control"/>
+                        </div>
+                        <div class="form-action text-right">
+                            <button type="button" id="verify_btn" class="btn btn-primary">Request Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var voiceFile = "";
+            var token = "yGQwwK7VEeZtO9dwTrtyL3Hb8AWFz0izv3kcvzEZelC";
+            $("#enrol_form [name='voiceFile']").on("change", function(e) {
+                voiceFile = $(this)[0].files[0]
+            })
+            $("#enrol_btn").click(function() {
+                var speakerId = $("#enrol_form [name='speakerId']").val();
+                var formData = new FormData();
+                formData.append("speakerId", speakerId);
+                formData.append("voiceFile", voiceFile);
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:3000/voice/enrolment",
+                    headers: {
+                        'Authorization': `Basic ${token}`
+                    },
+                    processData: false,
+                    contentType: false,
+                    data: formData
+                }).then(function(result) {
+                    console.log(result);
+                }, function(error) {
+                    console.log(error);
+                })
+            });
+
+            $("#verify_form [name='voiceFile']").on("change", function(e) {
+                voiceFile = $(this)[0].files[0];
+            });
+            $("#verify_btn").click(function() {
+                var speakerId = $("#verify_form [name='speakerId']").val();
+                var formData = new FormData();
+                formData.append("speakerId", speakerId);
+                formData.append("voiceFile", voiceFile);
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:3000/voice/verify",
+                    headers: {
+                        'Authorization': 'Basic a1A!s2S@d3D#'
+                    },
+                    processData: false,
+                    contentType: false,
+                    data: formData
+                }).then(function(result) {
+                    console.log(result);
+                }, function(error) {
+                    console.log(error);
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
